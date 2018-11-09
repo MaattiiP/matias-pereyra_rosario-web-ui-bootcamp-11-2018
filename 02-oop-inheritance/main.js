@@ -12,7 +12,7 @@ class EventEmitter {
     emit(eventName){
         if(this.events[eventName]){
             this.events[eventName].forEach(obj => {
-                obj.call();    
+                obj(eventName);    
             });
         }
     }
@@ -28,9 +28,9 @@ class EventEmitter {
 }
 
 class Movie extends EventEmitter {
-    constructor(name,year,duration){
+    constructor(tittle,year,duration){
         super();
-        this.tittle = name;
+        this.tittle = tittle;
         this.year = year;
         this.duration = duration;
         this.cast = "";
@@ -80,11 +80,6 @@ movieOne.on("resume",function resume() {
     console.log(movieOne.tittle+" has been resume");
 });
 
-/* Test 
-* movieOne.play();
-* movieOne.pause();
-* movieOne.resume();
- */
 
 const arnold = new Actor('Arnold Schwarzenegger', 50);
 const actors = [
@@ -95,7 +90,6 @@ const actors = [
 
 movieOne.addCast(arnold);
 movieOne.addCast(actors);
-//console.log(movieOne.cast);
 
 class Logger {
     constructor(){}
@@ -106,34 +100,26 @@ class Logger {
 
 let lgr = new Logger();
 
-movieOne.on("play",function listenPlay(){lgr.log("play")});
-movieOne.on("pause",function listenPause(){lgr.log("puase")});
-movieOne.on("resume",function listenResume(){lgr.log("resume")});
+movieOne.on("play",lgr.log);
+movieOne.on("pause",lgr.log);
+movieOne.on("resume",lgr.log);
 
 const Social = {
-    constructor(friendName){
-        this.friendName = friendName;
-    },
-    share(){
-        let backup = this.friendName;
+    share:function share(friendName){
         return (this.tittle+" shared by "+ friendName);
     },
-    like(){
-        let backup = this.friendName;
-        return(this.friendName+" likes "+  this.tittle);
+    like:function like(friendName){
+        return(friendName+" likes "+  this.tittle);
     }
 }
 
-let m = new Movie("testMovie",1111,1111);
+movieOne.play();
+movieOne.pause();
+movieOne.resume();
+console.log(movieOne.cast);
 
-let s = Social;
+Object.assign(movieOne,Social);
 
-Object.assign(m,s);
-
-
+movieOne.share('Mike Blossom');
 
 
-
-//Comandos para instalar
-/* --skip-git
-ng new xxxxxx --skip-git */
