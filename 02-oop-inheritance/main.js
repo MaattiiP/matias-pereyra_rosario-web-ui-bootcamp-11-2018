@@ -1,44 +1,3 @@
-/* class Movie {
-    constructor(name,year,duration){
-        this.tittle = name;
-        this.year = year;
-        this.duration = duration;
-        this.seconds = 0;
-        this.minutes = 0;
-    }
-    play(){
-        let _start = 0;
-        let _end = this.duration;
-        setInterval(()=>{
-            this.seconds++;
-            if(this.seconds > 60){
-                this.seconds = 0;
-                this.minutes++;
-            }
-        },1000);
-        console.log(this.tittle);
-        console.log("play");
-        console.log(this.seconds);
-        console.log(this.minutes);
-    }
-    pause(){
-        console.log("pause");
-        this.seconds = this.seconds;
-        this.minutes = this.minutes;
-    }
-    resume(){
-        console.log("resume");
-       this.play();
-    }
-}
-
-class Actor {
-    constructor(name,age){
-        this.name = name;
-        this.age = age;
-    }
-}
- */
 class EventEmitter {
     constructor(){
         this.events = {}
@@ -98,6 +57,7 @@ class Movie extends EventEmitter {
     }
 }
 
+
 class Actor {
     constructor(name,age){
         this.name = name;
@@ -120,9 +80,11 @@ movieOne.on("resume",function resume() {
     console.log(movieOne.tittle+" has been resume");
 });
 
-movieOne.play();
-movieOne.resume();
-movieOne.pause();
+/* Test 
+* movieOne.play();
+* movieOne.pause();
+* movieOne.resume();
+ */
 
 const arnold = new Actor('Arnold Schwarzenegger', 50);
 const actors = [
@@ -133,4 +95,45 @@ const actors = [
 
 movieOne.addCast(arnold);
 movieOne.addCast(actors);
-console.log(movieOne.cast);
+//console.log(movieOne.cast);
+
+class Logger {
+    constructor(){}
+    log(info){
+        console.log("The "+ info +" event has been emitted");        
+    }
+}
+
+let lgr = new Logger();
+
+movieOne.on("play",function listenPlay(){lgr.log("play")});
+movieOne.on("pause",function listenPause(){lgr.log("puase")});
+movieOne.on("resume",function listenResume(){lgr.log("resume")});
+
+const Social = {
+    constructor(friendName){
+        this.friendName = friendName;
+    },
+    share(){
+        let backup = this.friendName;
+        return (this.tittle+" shared by "+ friendName);
+    },
+    like(){
+        let backup = this.friendName;
+        return(this.friendName+" likes "+  this.tittle);
+    }
+}
+
+let m = new Movie("testMovie",1111,1111);
+
+let s = Social;
+
+Object.assign(m,s);
+
+
+
+
+
+//Comandos para instalar
+/* --skip-git
+ng new xxxxxx --skip-git */
