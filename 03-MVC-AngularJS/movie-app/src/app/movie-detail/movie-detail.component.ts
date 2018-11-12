@@ -10,19 +10,15 @@ import { MovieService }  from '../movie.service';
 })
 export class MovieDetailComponent implements OnInit {
   @Input() movie:Movie;
-  @Input() id:Number;
-  private movieService: MovieService;
-  private location: Location;
-  constructor() { }
+  
+  
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
   }
   save(): void {
+    //debugger
     this.movieService.updateHero(this.movie)
-      .subscribe(() => this.goBack());
   }
   
-  goBack(): void {
-    this.location.back();
-  }
 }
