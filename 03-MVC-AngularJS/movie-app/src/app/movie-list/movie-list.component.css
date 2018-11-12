@@ -10,38 +10,40 @@ ul{
 
 li{
     position: relative;
-    display: inline-table;
-    margin: 5px 5px;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
     text-align: center;
     border: 1px solid white;
     border-radius: 4px;
-    width: 25%;
-    height: 6em;
-    padding:  0;
     font-weight: bold;
+    width: 25%;
+    height: 150px;
     transition: all 1s ease;
 }
-label {
-    display: inline-block;
-    margin: 5px 0;
-}
-
 li:hover {
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+span {
+    display: inline-block;
+    width: 80%;
+    font-weight: lighter;
+}
+
+label {
+    display: inline-block;
+    margin: 5px 0;
+}
+
+
+
 .addMovie {
     margin: 0;
 }
 
-@media (max-width: 600px){
- li {width: 33.3%;} 
-}
 
-@media (max-width: 400px){
-    li {width: 100%;} 
-   }
 
 .delete{
     width: 30px;
@@ -55,4 +57,12 @@ li:hover {
 
 .delete:hover{
     background-color: rgba(255, 0, 0, 0.5);
+}
+
+@media (max-width: 600px){
+    li{width: 33.3%;}
+}
+
+@media (max-width: 330px){
+    li{width: 100%;}
 }

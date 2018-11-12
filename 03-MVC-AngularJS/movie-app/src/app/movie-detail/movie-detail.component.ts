@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Location } from '@angular/common';
 import {Movie} from '../movie';
 import { MovieService }  from '../movie.service';
 
@@ -10,6 +9,7 @@ import { MovieService }  from '../movie.service';
 })
 export class MovieDetailComponent implements OnInit {
   @Input() movie:Movie;
+  @Input() hide:Boolean;
   
   
   constructor(private movieService: MovieService) { }
@@ -17,8 +17,9 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit() {
   }
   save(): void {
-    //debugger
     this.movieService.updateHero(this.movie)
+    //when the SAVE is trigger, the details will disappear.(Don't work)
+    //this.hide = false;
   }
   
 }

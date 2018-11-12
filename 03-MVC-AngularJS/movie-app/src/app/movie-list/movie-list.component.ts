@@ -11,7 +11,7 @@ export class MovieListComponent implements OnInit {
   
   movies: Movie[];
   selectedMovie: Movie;
-
+  hideValue: Boolean;
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
@@ -19,6 +19,7 @@ export class MovieListComponent implements OnInit {
   }
   onSelect(movie: Movie){
     this.selectedMovie = movie;
+    this.hideValue = true;
   }
   getMovies(): void {
     this.movieService.getMovies()
@@ -32,7 +33,6 @@ export class MovieListComponent implements OnInit {
     if (!name) { return; }
     if(!duration){return;}
     if(!year){return;}
-  
     this.movieService.addMovie({ name, duration, year, ratingFA } as Movie)
       .subscribe(hero => {
         this.movies.push(hero);

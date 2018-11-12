@@ -14,13 +14,18 @@
     <button (click)="add(movieName.value,movieDuration.value,movieYear.value,movieFA.value); movieName.value=''; movieDuration.value=''; movieYear.value=''; movieFA.value=''">ADD</button>
 </div>
 <h2>List of movies</h2>
-<ul>
-    <li *ngFor='let movie of movies' (click)='onSelect(movie)' id={{movie.id}} value={{movie.id}}>
-        <span>{{movie.name}}</span>
-        
-        <button class="delete" title="delete movie"(click)="delete(movie)">X</button>
+<ul>  
+    <li *ngFor='let movie of movies' (click)='onSelect(movie);' id={{movie.id}} value={{movie.id}}>
+        <div>
+            <p>{{movie.name}}</p>
+            <span>Duration: {{movie.duration}}</span>
+            <span>Year: {{movie.year}}</span>
+            <span>ratingFA: {{movie.ratingFA}}</span>        
+            <button class="delete" title="delete movie"(click)="delete(movie)">X</button>
+        </div>
     </li>
 </ul>
+
 <br>
 
-<app-movie-detail [movie]='selectedMovie' ></app-movie-detail>
+<app-movie-detail [movie]='selectedMovie' [hide]='hideValue'></app-movie-detail>

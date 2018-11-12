@@ -6,10 +6,12 @@
 }
 
 body {
+    margin: 0 auto;
     background-color: rgba(4, 0, 10,0.9);
     font-family: "Asap", sans-serif;
     color: rgb(255, 255, 255);
     text-align: center;
+    width: 80%;
 }
 
 button{
@@ -25,4 +27,14 @@ button{
 button:hover{
     cursor: pointer;
     background-color:rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 600px){
+    body{width: 100%;}
+    li{width: 33.3%;}
+}
+
+@media (max-width: 300px){
+    body{width: 90%;}
+    li{width: 100%;}
 }

@@ -1,4 +1,4 @@
-<div *ngIf="movie">
+<div *ngIf="movie && hide">
   <h2>Edit Movie</h2>
   <h2>{{movie.name}}</h2>
   <div>
@@ -10,6 +10,5 @@
             
     <label> Rating FA: <input  [(ngModel)]="movie.ratingFA" placeholder="ratingFA"/></label> <br>
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">SAVE</button>
+  <button (click)="save();">SAVE</button>
 </div>
