@@ -1,0 +1,12 @@
+header{
+    text-align: right;
+    border: 2px solid white;
+    border-radius: 4px;
+    border-block-end: 50%;
+}
+
+h1{
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}

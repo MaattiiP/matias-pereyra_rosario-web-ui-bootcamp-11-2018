@@ -1,0 +1,24 @@
+<header>
+    <h2>List of movies</h2>
+</header>
+<ul>
+    <li *ngFor='let movie of movies' (click)='onSelect(movie)' id={{movie.id}} value={{movie.id}}>
+        <span>{{movie.name}}</span>
+        
+    </li>
+</ul>
+<br>
+<label> Movie Title: <input #movieName /></label>
+        
+<label> Duration: <input #movieDuration />
+        
+<label> Year: <input #movieYear /></label>
+        
+<label> Rating FA: <input #movieFA /></label>
+        
+<!-- (click) passes input value to add() and then clears the input -->
+<button (click)="add(heroName.value); heroName.value=''">
+add
+</button>
+
+<app-movie-detail [movie]='selectedMovie' ></app-movie-detail>

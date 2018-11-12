@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(4, 0, 10,0.9);
+    font-family: "Asap", sans-serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
