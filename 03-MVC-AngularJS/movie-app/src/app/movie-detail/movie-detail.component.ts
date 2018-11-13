@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import {Movie} from '../movie';
 import { MovieService }  from '../movie.service';
 
@@ -7,10 +7,10 @@ import { MovieService }  from '../movie.service';
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css']
 })
-export class MovieDetailComponent implements OnInit {
+export class MovieDetailComponent implements OnInit, OnChanges {
   @Input() movie:Movie;
   @Input() hide:Boolean;
-  
+  @Output() hideOut = new EventEmitter();
   
   constructor(private movieService: MovieService) { }
 
@@ -18,8 +18,10 @@ export class MovieDetailComponent implements OnInit {
   }
   save(): void {
     this.movieService.updateHero(this.movie)
-    //when the SAVE is trigger, the details will disappear.(Don't work)
-    //this.hide = false;
+    //when the SAVE is trigger, the details will disappear.
+    this.hideOut.emit();
   }
-  
+  ngOnChanges(){
+    console.log(this.hide);
+  }
 }
